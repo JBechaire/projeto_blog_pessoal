@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm/browser';
+import { Repository } from 'typeorm';
 import { Postagem } from '../entities/postagem.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Injectable } from '@nestjs/common';
