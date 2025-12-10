@@ -25,6 +25,7 @@ export class TemaService {
       },
       relations: {
         postagem: true,
+        
       },
     });
     if (!tema) {
@@ -40,6 +41,7 @@ export class TemaService {
       },
       relations: {
         postagem: true,
+        
       },
     });
   }
