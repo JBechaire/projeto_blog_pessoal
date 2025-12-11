@@ -9,14 +9,18 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { PostagemService } from '../services/postagem.service';
 import { Postagem } from '../entities/postagem.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth-guard';
+
 
 @Controller('/postagens')
 export class PostagemController {
   constructor(private readonly postagemService: PostagemService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   @HttpCode(HttpStatus.OK)
   findAll(): Promise<Postagem[]> {
