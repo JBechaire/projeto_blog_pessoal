@@ -15,12 +15,17 @@ import { PostagemService } from '../services/postagem.service';
 import { Postagem } from '../entities/postagem.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth-guard';
 
-
+@UseGuards(JwtAuthGuard)
 @Controller('/postagens')
 export class PostagemController {
-  constructor(private readonly postagemService: PostagemService) {}
+  constructor(private readonly postagemService: PostagemService) { }
 
-  @UseGuards(JwtAuthGuard)
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  create(@Body() postagem: Postagem): Promise<Postagem> {
+    return this.postagemService.create(postagem);
+  }
+
   @Get()
   @HttpCode(HttpStatus.OK)
   findAll(): Promise<Postagem[]> {
@@ -37,12 +42,6 @@ export class PostagemController {
   @HttpCode(HttpStatus.OK)
   findByAllTitulo(@Param('titulo') titulo: string): Promise<Postagem[]> {
     return this.postagemService.findAllByTitulo(titulo);
-  }
-
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  create(@Body() postagem: Postagem): Promise<Postagem> {
-    return this.postagemService.create(postagem);
   }
 
   @Put()
