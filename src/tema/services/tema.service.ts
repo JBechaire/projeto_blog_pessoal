@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { DeleteResult, ILike, Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Tema } from '../entities/tema.entity';
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class TemaService {
@@ -25,11 +25,11 @@ export class TemaService {
       },
       relations: {
         postagem: true,
-        
       },
     });
+
     if (!tema) {
-      throw new HttpException('Tema não encontrado', HttpStatus.NOT_FOUND);
+      throw new HttpException('Tema não econtrado!', HttpStatus.NOT_FOUND);
     }
     return tema;
   }
@@ -41,7 +41,6 @@ export class TemaService {
       },
       relations: {
         postagem: true,
-        
       },
     });
   }
@@ -52,11 +51,13 @@ export class TemaService {
 
   async update(tema: Tema): Promise<Tema> {
     await this.findById(tema.id);
+
     return await this.temaRepository.save(tema);
   }
 
   async delete(id: number): Promise<DeleteResult> {
     await this.findById(id);
+
     return await this.temaRepository.delete(id);
   }
 }

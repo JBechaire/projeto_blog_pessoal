@@ -10,19 +10,12 @@ export class PostagemService {
     @InjectRepository(Postagem)
     private postagemRepository: Repository<Postagem>,
     private temaService: TemaService,
-  ) { }
-
-  async create(postagem: Postagem): Promise<Postagem> {
-    await this.temaService.findById(postagem.tema.id);
-
-    return await this.postagemRepository.save(postagem);
-  }
+  ) {}
 
   async findAll(): Promise<Postagem[]> {
     return await this.postagemRepository.find({
       relations: {
         tema: true,
-        usuario: true,
       },
     });
   }
@@ -34,8 +27,6 @@ export class PostagemService {
       },
       relations: {
         tema: true,
-        usuario: true,
-
       },
     });
 
@@ -52,9 +43,14 @@ export class PostagemService {
       },
       relations: {
         tema: true,
-        usuario: true,
       },
     });
+  }
+
+  async create(postagem: Postagem): Promise<Postagem> {
+    await this.temaService.findById(postagem.tema.id);
+
+    return await this.postagemRepository.save(postagem);
   }
 
   async update(postagem: Postagem): Promise<Postagem> {
