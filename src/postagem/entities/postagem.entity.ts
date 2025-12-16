@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Tema } from '../../tema/entities/tema.entity';
-import { Usuario } from '../../usuario/entities/usuario.entities';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
 
 @Entity({ name: 'tb_postagens' })

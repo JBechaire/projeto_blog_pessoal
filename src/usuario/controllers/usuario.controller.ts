@@ -11,9 +11,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { UsuarioService } from '../services/usuario.service';
-import { Usuario } from '../entities/usuario.entities';
+import { Usuario } from '../entities/usuario.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Usuario')
+@ApiBearerAuth()
 @Controller('/usuarios')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
