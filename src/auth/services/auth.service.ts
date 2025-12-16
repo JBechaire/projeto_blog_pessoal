@@ -2,9 +2,9 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UsuarioService } from '../../usuario/services/usuario.service';
 import { JwtService } from '@nestjs/jwt';
 import { Bcrypt } from '../bcrypt/bcrypt';
+import { UsuarioLogin } from '../entities/usuariologin.entity';
 import { UsuarioSemSenha } from '../interfaces/usuario-sem-senha.interface';
 import { UsuarioResponse } from '../interfaces/usuario-response.interface';
-import { UsuarioLogin } from '../entities/usuariologin.entities';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +12,7 @@ export class AuthService {
     private usuarioService: UsuarioService,
     private jwtService: JwtService,
     private bcrypt: Bcrypt,
-  ) { }
+  ) {}
 
   async validateUser(
     username: string,

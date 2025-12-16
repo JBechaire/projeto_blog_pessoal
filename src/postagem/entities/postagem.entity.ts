@@ -9,6 +9,7 @@ import {
 import { Tema } from '../../tema/entities/tema.entity';
 import { Usuario } from '../../usuario/entities/usuario.entities';
 
+
 @Entity({ name: 'tb_postagens' })
 export class Postagem {
   @PrimaryGeneratedColumn()

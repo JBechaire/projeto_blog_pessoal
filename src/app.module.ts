@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsuarioModule } from './usuario/usuario.module';
 import { Usuario } from './usuario/entities/usuario.entities';
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -22,8 +23,8 @@ import { Usuario } from './usuario/entities/usuario.entities';
     }),
     PostagemModule,
     TemaModule,
-   AuthModule,
-   UsuarioModule,
+    AuthModule,
+    UsuarioModule,
   ],
   controllers: [],
   providers: [],
