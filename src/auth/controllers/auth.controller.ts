@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { UsuarioResponse } from '../interfaces/usuario-response.interface';
-import { LocalAuthGuard } from '../guard/local-auth-guard';
+import { LocalAuthGuard } from '../guard/local-auth.guard';
 import { UsuarioLogin } from '../entities/usuariologin.entities';
 
 @Controller('/usuarios')
